@@ -32,6 +32,10 @@ python main.py
 
 - Les performances de l'application peuvent varier en fonction de la puissance de votre appareil et de la taille du jeu de données utilisé pour la classification.
 
+
+---
+
+
 ## Contact
 
 Pour toute question ou commentaire concernant ce projet, n'hésitez pas à me contacter :
@@ -40,6 +44,6 @@ Pour toute question ou commentaire concernant ce projet, n'hésitez pas à me co
 - Email : amrouni.kahina2002@gmail.com
 
 
----
 
-Assurez-vous d'adapter les sections "Installation" et "Utilisation" en fonction de votre configuration spécifique. Vous pouvez également ajouter d'autres sections ou informations pertinentes en fonction de vos besoins.
+
+
