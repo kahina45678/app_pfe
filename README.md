@@ -32,7 +32,11 @@ python main.py
 
 - Les performances de l'application peuvent varier en fonction de la puissance de votre appareil et de la taille du jeu de données utilisé pour la classification.
 
+- Assurez vous de modifier le chemin des fichiers après avoir cloné le repo.
 
+## Jeu de données 
+
+https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset
 ---
 
 
