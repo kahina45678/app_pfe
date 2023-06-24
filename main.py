@@ -119,7 +119,7 @@ dico = {
 
 
 
-# ...
+
 
 class HomeScreen(Screen):
     def __init__(self, **kwargs):
@@ -177,10 +177,33 @@ class HomeScreen(Screen):
             image_path = str(image_path)
 
         image = cv2.imread(image_path)
-        thresholded = cv2.resize(image, (224, 224))
-        thresholded = thresholded.astype(np.float32) / 255.0
+
+        # Définition des seuils pour la suppression des couleurs indésirables
+        lower_blue = np.array([90, 0, 0])  
+        upper_blue = np.array([255, 70, 70])  
+        lower_pink = np.array([0, 0, 100])  
+        upper_pink = np.array([70, 70, 255])  
+        lower_violet = np.array([100, 0, 100])  
+        upper_violet = np.array([255, 70, 255])  
+
+        # Suppression des pixels de couleur bleue, rose et violet
+        mask_blue = cv2.inRange(image, lower_blue, upper_blue)
+        mask_pink = cv2.inRange(image, lower_pink, upper_pink)
+        mask_violet = cv2.inRange(image, lower_violet, upper_violet)
+        mask_combined = cv2.bitwise_or(mask_blue, mask_pink, mask_violet)
+        image_filtered = cv2.bitwise_and(image, image, mask=255 - mask_combined)
+
+        # Redimensionnement de l'image à la taille souhaitée
+        resized_image = cv2.resize(image_filtered, (224, 224))
+
+        # Normalisation de l'image
+        thresholded = resized_image.astype(np.float32) / 255.0
+
+        # Ajout d'une dimension pour correspondre à l'entrée du modèle
         thresholded = np.expand_dims(thresholded, axis=0)
+
         return thresholded
+
 
     def run_model(self, thresholded):
         interpreter = tf.lite.Interpreter(model_path=MODEL_PATH)
@@ -339,4 +362,3 @@ class PlantDiseaseApp(App):
 
 if __name__ == '__main__':
     PlantDiseaseApp().run()
-
