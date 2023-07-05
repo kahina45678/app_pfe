@@ -33,6 +33,7 @@ python main.py
 - Les performances de l'application peuvent varier en fonction de la puissance de votre appareil et de la taille du jeu de données utilisé pour la classification.
 
 - Assurez vous de modifier le chemin des fichiers après avoir cloné le repo.
+- L'entainement du modele ainsi que son test sans interface se fait dans le notebbok jupyter 'test.ipynb'
 
 ## Jeu de données 
 
